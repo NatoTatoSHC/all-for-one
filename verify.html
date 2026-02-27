@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Verify</title>
+    </head>
+    <body>
+        <form action="/app" method="post">
+            <input type="text" name="loc" id="loc" style="display: none;"/>
+            <label>Password</label>
+            <input type="text" name="password" autocomplete="off"/>
+            <button type="submit" style="display: none;"></button>
+        </form>
+        <script>
+            var loc = document.querySelector("#loc");
+            var pars = location.search.split("?")[1].split("&");
+            var goto;
+            pars.forEach(par => {
+                if (par.startsWith("loc=")) {
+                    loc.value = par.replace("loc=", "");
+                    goto = par.replace("loc=", "");
+                }
+            })
+            
+        </script>
+    </body>
+</html>

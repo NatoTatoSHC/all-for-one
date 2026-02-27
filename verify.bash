@@ -1,0 +1,1 @@
+curl -X POST -d "let=true" localhost:3000

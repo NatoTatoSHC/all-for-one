@@ -1,0 +1,18 @@
+<html>
+    <head></head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+            let client = window.supabase.createClient("https://jgjdxlulszliepzrhgff.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnamR4bHVsc3psaWVwenJoZ2ZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0ODc1ODIsImV4cCI6MjA4MTA2MzU4Mn0.OWdRl6uqpdui33Jg0g1SRMS3oeKVDUOBsogBovVnq_I");
+            async function main() {
+                const {data, error} = await client.from("silos").select("*");
+                data.forEach(silo => {
+                    let item = document.createElement("div");
+                    item.innerHTML = silo.silo + ": " + silo.status;
+                    document.body.appendChild(item);
+                });
+            }
+            main();
+        </script>
+    </body>
+</html>
