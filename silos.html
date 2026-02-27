@@ -1,15 +1,63 @@
 <html>
-    <head></head>
+    <head>
+        <style>
+            .each {
+                justify-content: center;
+            }
+            .each * {
+                padding: 10px;
+            }
+            .silobox {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        </style>
+    </head>
     <body>
+        <div id="main">
+            <div class="each" id="MOD8SGJ">
+                <h1>Jackson</h1>
+            </div>
+            <div class="each" id="MOD8SGG">
+                <h1>Ste. Geneveive</h1>
+            </div>
+            <div class="each" id="MOD8SGU">
+                <h1>Union</h1>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script>
             let client = window.supabase.createClient("https://jgjdxlulszliepzrhgff.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnamR4bHVsc3psaWVwenJoZ2ZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0ODc1ODIsImV4cCI6MjA4MTA2MzU4Mn0.OWdRl6uqpdui33Jg0g1SRMS3oeKVDUOBsogBovVnq_I");
             async function main() {
-                const {data, error} = await client.from("silos").select("*");
+                const {data, error} = await client.from("silos").select("*").order("silo");
+                console.log(data);
                 data.forEach(silo => {
                     let item = document.createElement("div");
-                    item.innerHTML = silo.silo + ": " + silo.status;
-                    document.body.appendChild(item);
+                    item.className = "silobox";
+
+                    let name = document.createElement("div");
+                    name.className = "silosec";
+                    name.innerHTML = silo.silo;
+                    name.style = "text-align: center; border-radius: 10px; background-color: whitesmoke;"
+                    item.appendChild(name);
+
+                    let status = document.createElement("div");
+                    status.className = "silosec";
+                    status.innerHTML = silo.status;
+                    status.style = "text-align: center; border-radius: 10px;"
+                    if (silo.status == "Loaded") {
+                        status.style.backgroundColor = "limegreen";
+                    }
+                    item.appendChild(status);
+
+                    let missle = document.createElement("div");
+                    missle.className = "silosec";
+                    missle.innerHTML = silo.missle;
+                    missle.style = "text-align: center; border-radius: 10px; background-color: whitesmoke;"
+                    item.appendChild(missle);
+
+                    document.querySelector("#"+silo.silo.slice(0, 7)).appendChild(item);
+                    
                 });
             }
             main();

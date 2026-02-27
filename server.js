@@ -27,7 +27,10 @@ app.post("/app", (req, res) => {
 })
 
 app.post("/status", (req, res) => {
-    
+    if (req.body.password == fs.readFileSync(path.resolve("password.txt"), "utf8")) {
+        let silo = req.body.silo;
+        let status = req.body.status;
+    }
 })
 
 app.listen(3000);
