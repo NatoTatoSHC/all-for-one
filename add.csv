@@ -1,5 +1,9 @@
 silo,status,missle
-MOD8SGG1, Loaded, U-235
-MOD8SGG2, Loaded, U-235
-MOD8SGG3, Loaded, U-235
-MOD8SGG4, Loaded, U-235
+MOD8SGS1,Loaded,U-235
+MOD8SGS2,Loaded,U-235
+MOD8SGS3,Loaded,U-235
+MOD8SGS4,Loaded,U-235
+MOD8SGB1,Loaded,U-235
+MOD8SGB2,Loaded,U-235
+MOD8SGB3,Loaded,U-235
+MOD8SGB4,Loaded,U-235
