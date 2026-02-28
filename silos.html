@@ -44,6 +44,8 @@
                         element.style.backgroundColor = "powderblue";
                     } else if (status == "Empty") {
                         element.style.backgroundColor = "silver";
+                    } else if (staus == "Unstable") { 
+                         element.style.backgroundColor = "red";
                     }
             }
             let client = window.supabase.createClient("https://jgjdxlulszliepzrhgff.supabase.co", "sb_publishable_JUr3sNI84pNyl30pzxD-dA_bvZhy1w3");
