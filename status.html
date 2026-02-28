@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <style>
+            body {
+                justify-items: center;
+            }
+            form {
+                display:grid;
+                grid-template-columns: 1fr;
+                width: fit-content;
+            }
+            .div {
+                position: relative;
+                width: 200%;
+                height: 2px;
+                background-color: black;
+                left: -50%
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Update Status</h1>
+        <form method="post" action="/status">
+            <div class="div"></div>
+            <h2>Silo</h2>
+            <input type="text" autocomplete="off" name="silo"/>
+            <br>
+            <div class="div"></div>
+            <h2>Status</h2>
+            <h3 id="statusText">Empty</h2>
+            <input id="status" style="display: none;" name="status" value="Empty"/>
+            <button type="button" onclick="changeStatus('Empty');">Empty</button>
+            <button type="button" onclick="changeStatus('Loaded');">Loaded</button>
+            <button type="button" onclick="changeStatus('Dirty');">Dirty</button>
+            <button type="button" onclick="changeStatus('Cleaning');">Cleaning</button>
+            <br>
+            <div class="div"></div>
+            <h2>Missle</h2>
+            <select name="missle">
+                <option value="U-235">Uranium 235</option>
+            </select>
+            <br>
+            <div class="div"></div>
+            <h2>Password</h2>
+            <input type="text" autocomplete="off" name="password"/>
+            <br>
+            <div class="div"></div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="div"></div>
+        <h1>Add One Time</h1>
+        <form method="post" action="/status">
+            <h2>One Time Code</h2>
+            <input type="text" name="oneTime" autocomplete="off"/>
+            <br>
+            <div class="div"></div>
+            <h2>Password</h2>
+            <input type="text" autocomplete="off" name="password"/>
+            <br>
+            <div class="div"></div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            function changeStatus(status) {
+                document.querySelector("#status").value = status;
+                document.querySelector("#statusText").innerHTML = status;
+            }
+        </script>
+    </body>
+</html>

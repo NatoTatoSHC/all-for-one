@@ -40,10 +40,12 @@
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script>
             function colorify(status, element) {
-                if (silo.status == "Loaded") {
-                        status.style.backgroundColor = "limegreen";
-                    } else if (silo.status == "Dirty") {
-                        status.style.backgroundColor = "brown";
+                if (status == "Loaded") {
+                        element.style.backgroundColor = "limegreen";
+                    } else if (status == "Dirty") {
+                        element.style.backgroundColor = "brown";
+                    } else if (status == "Cleaning") {
+                        element.style.backgroundColor = "powderblue";
                     }
             }
             let client = window.supabase.createClient("https://jgjdxlulszliepzrhgff.supabase.co", "sb_publishable_JUr3sNI84pNyl30pzxD-dA_bvZhy1w3");
@@ -64,11 +66,7 @@
                     status.className = "silosec";
                     status.innerHTML = silo.status;
                     status.style = "text-align: center; border-radius: 10px;"
-                    if (silo.status == "Loaded") {
-                        status.style.backgroundColor = "limegreen";
-                    } else if (silo.status == "Dirty") {
-                        status.style.backgroundColor = "brown";
-                    }
+                    colorify(silo.status, status);
                     item.appendChild(status);
 
                     let missle = document.createElement("div");
