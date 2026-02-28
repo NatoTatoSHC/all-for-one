@@ -37,6 +37,7 @@ app.post("/app", (req, res) => {
         }
     } else {
         console.log("deniaed");
+        res.redirect("/");
     }
 })
 

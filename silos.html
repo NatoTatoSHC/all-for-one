@@ -18,23 +18,19 @@
     </head>
     <body>
         <div id="main">
+            <button id="refresh" onclick="main()">Refresh</button>
             <h1>Ste. Geneveive County</h1>
             <div class="county">
-                <div class="each" id="MOD8SGJ">
-                    <h1>Jackson</h1>
-                </div>
-                <div class="each" id="MOD8SGG">
-                    <h1>Ste. Geneveive</h1>
-                </div>
-                <div class="each" id="MOD8SGU">
-                    <h1>Union</h1>
-                </div>
-                <div class="each" id="MOD8SGS">
-                    <h1>Saline</h1>
-                </div>
-                <div class="each" id="MOD8SGB">
-                    <h1>Beauvans</h1>
-                </div>
+                <h1>Jackson</h1>
+                <div class="each" id="MOD8SGJ"></div>
+                <h1>Ste. Geneveive</h1>
+                <div class="each" id="MOD8SGG"></div>
+                <h1>Union</h1>
+                <div class="each" id="MOD8SGU"></div>
+                <h1>Saline</h1>
+                <div class="each" id="MOD8SGS"></div>
+                <h1>Beauvans</h1>
+                <div class="each" id="MOD8SGB"></div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -46,10 +42,13 @@
                         element.style.backgroundColor = "brown";
                     } else if (status == "Cleaning") {
                         element.style.backgroundColor = "powderblue";
+                    } else if (status == "Empty") {
+                        element.style.backgroundColor = "silver";
                     }
             }
             let client = window.supabase.createClient("https://jgjdxlulszliepzrhgff.supabase.co", "sb_publishable_JUr3sNI84pNyl30pzxD-dA_bvZhy1w3");
             async function main() {
+                document.querySelectorAll(".each").forEach(child => child.innerHTML = "");
                 const {data, error} = await client.from("silos").select("*").order("silo");
                 console.log(data);
                 data.forEach(silo => {
