@@ -47,6 +47,8 @@
                     status.style = "text-align: center; border-radius: 10px;"
                     if (silo.status == "Loaded") {
                         status.style.backgroundColor = "limegreen";
+                    } else if (silo.status == "Dirty") {
+                        status.style.backgroundColor = "brown";
                     }
                     item.appendChild(status);
 
