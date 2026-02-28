@@ -29,7 +29,7 @@ app.post("/app", (req, res) => {
     if (req.body.loc == "") {
         res.redirect("/");
     }
-    if (req.body.password == fs.readFileSync(path.resolve("password.txt"), "utf8") || oneTimes.includes(req.body.password)) {
+    if (req.body.password == fs.readFileSync(path.resolve("/etc/secrets/password"), "utf8") || oneTimes.includes(req.body.password)) {
         console.log("verified");
         res.sendFile(path.resolve(req.body.loc+".html"));
         if (oneTimes.includes(req.body.password)) {
@@ -45,7 +45,7 @@ app.post("/status", (req, res) => {
     console.log("Status Update Request");
     console.log(req.body);
     if (req.body.oneTime) {
-        if (req.body.password == fs.readFileSync(path.resolve("password.txt"), "utf8")) {
+        if (req.body.password == fs.readFileSync(path.resolve("/etc/secrets/password"), "utf8")) {
             if (!oneTimes.includes(req.body.oneTime)) {
                 oneTimes.push(req.body.oneTime);
             }
@@ -54,7 +54,7 @@ app.post("/status", (req, res) => {
             res.send("Incorrect Password");
         }
     } else {
-        if (req.body.password == fs.readFileSync(path.resolve("password.txt"), "utf8")) {
+        if (req.body.password == fs.readFileSync(path.resolve("/etc/secrets/password"), "utf8")) {
             let silo = req.body.silo;
             let status = req.body.status;
             let missle = req.body.missle;
