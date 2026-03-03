@@ -63,6 +63,26 @@
             <br>
             <button type="submit">Submit</button>
         </form>
+        <div class="div"></div>
+        <h1>Launch</h1>
+        <form method="post" action="/status">
+            <h2>Silo</h2>
+            <input type="text" autocomplete="off" name="silo"/>
+            <br>
+            <div class="div"></div>
+            <h2>Location</h2>
+            Longitude: <input type="number"> &deg; <input type="number"/> ' <input type="number"/> " <select><option value="N">N</option><option value="S">S</option></select>
+            <br>
+            Latitude: <input type="number"> &deg; <input type="number"/> ' <input type="number"/> " <select><option value="W">W</option><option value="E">E</option></select>
+            <br>
+            <div class="div"></div>
+            <h2>Password</h2>
+            <input name="password" type="text" autocomplete="off"/>
+            <br>
+            <div class="div"></div>
+            <br>
+            <button type="submit">Sumbit</button>
+        </form>
         <script>
             function changeStatus(status) {
                 document.querySelector("#status").value = status;
